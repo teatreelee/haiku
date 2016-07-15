@@ -60,17 +60,35 @@ function syllableData(data){
 syllableData(cmudictFile);
 
 3 & 4.
+// function createHaiku(structure, dict){ //takes two arrays as parameters
+// 	var haiku = "";
+// 	for (var i = 0; i < structure.length; i++){
+// 		haiku += dict[structure[i]][(Math.floor(Math.random() * dict[structure[i]].length))];
+// 		if (i < structure.length -1){
+// 			haiku += '\n';
+// 		}
+// 	}
+// 	return haiku;
+// }
+// console.log(createHaiku([5,7,5],syllablesArr));
+
 function createHaiku(structure, dict){ //takes two arrays as parameters
 	var haiku = "";
+	var countSylls = 0, wordSylls;
 	for (var i = 0; i < structure.length; i++){
-		haiku += dict[structure[i]][(Math.floor(Math.random() * dict[structure[i]].length))];
-		if (i < structure.length -1){
+		wordSylls = structure[i];
+		haiku += dict[wordSylls][(Math.floor(Math.random() * dict[wordSylls].length))];
+		countSylls += wordSylls;
+		if (countSylls === 5 || countSylls === 12){
 			haiku += '\n';
+		} else if (i < structure.length -1){
+			haiku += ' ';
 		}
 	}
 	return haiku;
 }
-console.log(createHaiku([5,7,5],syllablesArr));
+
+console.log(createHaiku([2,1,1,1,7, 3,2],syllablesArr));
 
 module.exports.array2d = array2d;
 module.exports.createHaiku = createHaiku;
