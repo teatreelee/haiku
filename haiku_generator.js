@@ -1,5 +1,6 @@
 var haiku = require('./haiku.js');
-var syllablesArr = array2d(8);
-var cmudictFile = readCmudictFile('./cmudict.txt');
-syllableData(cmudictFile);
-console.log(haiku.createHaiku([5,7,5], syllablesArr)); // get undefined after statement.
+var syllablesArr = haiku.array2d(8);
+var cmudictFile = haiku.readCmudictFile('./cmudict.txt');
+syllablesArr = haiku.syllableData(cmudictFile);
+
+console.log(haiku.createHaiku(haiku.randomize(),syllablesArr)); // get undefined after statement.

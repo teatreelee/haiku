@@ -55,22 +55,10 @@ function syllableData(data){
 	});
 		return syllablesArr;
 }
-
-//updated empty arr with information
 syllableData(cmudictFile);
+//updated empty arr with information
 
-3 & 4.
-// function createHaiku(structure, dict){ //takes two arrays as parameters
-// 	var haiku = "";
-// 	for (var i = 0; i < structure.length; i++){
-// 		haiku += dict[structure[i]][(Math.floor(Math.random() * dict[structure[i]].length))];
-// 		if (i < structure.length -1){
-// 			haiku += '\n';
-// 		}
-// 	}
-// 	return haiku;
-// }
-// console.log(createHaiku([5,7,5],syllablesArr));
+//3 & 4.
 
 function createHaiku(structure, dict){ //takes two arrays as parameters
 	var haiku = "";
@@ -88,9 +76,29 @@ function createHaiku(structure, dict){ //takes two arrays as parameters
 	return haiku;
 }
 
-console.log(createHaiku([2,1,1,1,7, 3,2],syllablesArr));
+//5. allow haiku to have a random format
+	//1. create empty array to store haiku format;
+	//2. push random number from 1-5 to the array. keep doing so until there are five syllables ex:
+		//a. pushed 2
+		//b. put number btwn 1-3; pushed 1
+		//c. put number between 1-2; pushed 1
+		//d. since only 1 is an option, push 1;
+	//3. repeat for 7 and 5
+	//4. return array
+function randomize(){
+	var arr = [];
+	var syllsLeft = [5,7,5];
+	for (var i = 0; i < syllsLeft.length; i++){
+		while (syllsLeft[i] > 0){
+			arr.push(Math.floor(Math.random() * syllsLeft[i]) + 1);
+			syllsLeft[i] -= arr[arr.length -1];
+		}
+	}
+	return arr;
+}
 
 module.exports.array2d = array2d;
 module.exports.createHaiku = createHaiku;
 module.exports.readCmudictFile = readCmudictFile;
 module.exports.syllableData = syllableData;
+module.exports.randomize = randomize;
